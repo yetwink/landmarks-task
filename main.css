@@ -1,15 +1,31 @@
 body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
+
+h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+}
+
 
 header {
     background-color: white;
     height: 40px;
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
+    z-index: 999;
 }
 
 .header__info{
@@ -18,21 +34,40 @@ header {
     text-align: center;
 }
 
+.fake {
+    height: 100vh;
+}
+
 
 main {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: calc(100vh - 40px);
-    overflow: hidden;
+    height: 100vh;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .container {
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
+
+.cards-hider-wrapper{
+    width: 100%;
+    /* height: 100%; */
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .landmarks__shadow {
     position: absolute;
@@ -43,27 +78,119 @@ main {
     background-color: rgba(0, 0, 0, .8);
     z-index: 1;
     opacity: 1;
-    visibility: hidden;
 }
 
-.lands-card{
+
+.line{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px; 
+    height: 100%; 
+    background-color: #fff; 
+    display: block;
+    z-index: 1;
+    opacity: 0.1;
+    transform: translateY(-100%);
+}
+.line.active {
+    height: 100%;
+}
+
+
+.lands-card-wrapper{
     width: 100%;
     height: 100%;
+}
+.lands-card-wrapper-2{
+    position: absolute;
+    /* transform: translateY(70%); */
+    transform: translateY(61%);
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.lands-card-wrapper-2.active {
+    transform: translateY(61%);
+}
+
+
+.lands-card{
+    width: 100vw;
+    height: 100vh;
     clip-path: circle(75% at 50% 40%);
     z-index: 2;
-    visibility: hidden;
-    transition: all 1s ease 0s;
     opacity: 1;
-    /* transform: scale(0.8); */
+}
+.lands-card-2 {
+    width: 100vw;
+    height: 100vh;
+    clip-path: circle(5% at 50% 40%);
+    z-index: 2;
+    opacity: 1;
 }
 
-.card-img{
-    /* transform: scale(0.85); */
+.lands-card-hider{
+    position: absolute;
+    width: 100%;
+    height: 170%;
+    bottom: 0;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 3;
+    opacity: 1;
+    transform: scale(0);
+}
+
+.lands-card-2-hider {
+    position: absolute;
+    width: 20%;
+    height: 40%;
+    left: 40%;
+    right: 50%;
+    top: 23%;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 3;
+    opacity: 1;
+
+/* ------- 2nd animation ------- */
+
+    /* width: 100%;
+    height: 170%;
+    bottom: 0;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 3;
+    opacity: 1; */
+
+}
+
+
+
+.card-img, .bg-img{
     object-position: top;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.bg-img {
+.card-img-2{
+    object-position: top;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
+
+.bg-img.disabled {
+    opacity: 0;
+}
+
+
+
 
 
 .bg-img, .lands-card {
@@ -71,17 +198,117 @@ main {
     top: 0;
     left: 0;
     object-fit: cover; 
+    transform: translateY(40px);
 }
+
+.lands-card-info{
+    width: 100%;
+    position: absolute;
+    bottom: 15%;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+}
+
+
+.lands-card-info-2{
+    width: 100%;
+    position: absolute;
+    bottom: 20%;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+}
+
+
+
+.card-info-mins{
+    font-size: 50px;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+.card-info-mins-2 {
+    font-size: 50px;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+.card-info-subtitle{
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+.card-info-subtitle-2{
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+.landmarks__hidden-info{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.lands-hidden-text{
+
+    position: absolute;
+    width: 300px;
+    left: 51.5%;
+    font-size: 18px;
+    font-family: "Montserrat";
+    color: #fff;
+    top: 5.5%;
+    z-index: 2;
+    opacity: 0;
+}
+.lands-hidden-text:nth-child(2) {
+    top: 9.5%
+}
+.lands-hidden-text:nth-child(3) {
+    top: 13.5%
+}
+.lands-hidden-text:nth-child(4) {
+    top: 17.5%
+}
+
+
 
 .big-circle, .small-circle {
     position: absolute;
     left: 50%;
     z-index: 3;
     opacity: 1;
-    visibility: hidden;
+    /* visibility: hidden; */
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, .1);
-    transition: all 1s ease 0s;
+    /* transition: all 1s ease 0s; */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -92,28 +319,28 @@ main {
 
 .big-circle {
     background-image: url("img/big\ circle.svg") center no-repeat ;
-    width: 1200px;
-    height: 1200px;
+    /* width: 100%; */
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    /* height: 600px; */
+    height: 130%;
+    transition: 0.6s all;
+}
 
+.big-circle.active{
+    height: 110%;
+    /* transform: scale(1.5); */
 }
 
 .small-circle {
     background-image: url("img/small\ circle.svg") no-repeat;
-    width: 800px;
-    height: 800px;
+    aspect-ratio: 1/1;
+    /* width: 800px; */
+    /* height: 1000px; */
+    height: 80%;
+    transition: 0.6s all;
 }
 
-
-
-
-
-
-/* @keyframes shrink {
-    0% {
-        clip-path: circle(15% at 50% 40%);  
-    }
-
-    100% {
-        clip-path: circle(100% at 50% 50%); 
-    }
-} */
+.small-circle.active{
+    height: 70%;
+}
