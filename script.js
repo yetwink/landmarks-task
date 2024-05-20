@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
       CardsInfo = [...document.querySelectorAll('.lands-card-info-2')],
       hiddenInfo = [...document.querySelectorAll('.lands-hidden-text')];
 
-    let salamYcardPercent = 42;
+    let salamYcardPercent = 32;
 
     const bigCircle = document.querySelector('.big-circle'),
           smallCircle = document.querySelector('.small-circle'),
@@ -22,19 +22,25 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
             trigger: '.main',
             start: 'top top',
-            end: 'bottom+=6500vh top',
+            end: 'bottom+=4500vh top',
             markers: true,
             pin: true,
-            scrub: 1,
+            scrub: 2,
         }
     });
     
     tl.to('.lands-card', {
         autoAlpha: 1,
         duration: 1,
-        clipPath: 'circle(15% at 50% 45%)',
+        clipPath: 'circle(15% at 50% 50%)',
+        // yPercent: -5,
         
     })
+
+    tl.to('.lands-card', {
+        yPercent: -5,
+        // objectPosition: '50% 50%'
+    }, '<+=60%')
     
     tl.to('.landmarks__shadow',{
         autoAlpha: 1,
@@ -52,8 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
     tl.to('.card-img',{
-        scale: 0.8,
-        y: 100,
+        scale: 0.6,
+        yPercent: 4,
         onComplete: () => {
             bigCircle.classList.add('active')
             smallCircle.classList.add('active')
@@ -66,8 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     landmarksWrappers.forEach(el => {
         tl.to(el, {
-            opacity: 1,
-            duration: 0
+            yPercent: -10,
         })
     }, '<')
 
@@ -89,22 +94,23 @@ document.addEventListener("DOMContentLoaded", function () {
         yPercent: -47
     }, '<')
     tl.to('.lands-card-hider', {
-        scale: 1,
-        opacity: 1
+        clipPath: 'circle(1% at 50% 50%)',
     }, '<')
 
     tl.to(hiddenInfo[0], {
-        opacity: 1,
-    }, '<')
+        xPercent: 100,
+        duration: 0.5
+    },'<')
 
 
     for(let i = 0; i < landmarksWrappers.length; i++){
 
-        if (i > 0){
-            tl.to(hiddenInfo[i], {
-                opacity: 1,
-            }, '<')
-        }
+  
+        tl.to(hiddenInfo[i], {
+            xPercent: 100,
+            duration: 0.5
+        }, '<')
+
         tl.to(fuckingLine, {
             yPercent: 100,
             duration: 1
@@ -121,38 +127,47 @@ document.addEventListener("DOMContentLoaded", function () {
     
         tl.to(CardsImage[i],{
             scale: 0.6,
-            y: -50,
+            // y: -50,
         }, '<')
+
+
+        tl.to(CardsHider[i], {
+            clipPath: 'circle(0% at 50% 50%)',
+            // duration: 1
+        }, '<')
+
+
     
         tl.to(landmarksCards_2[i], {
             autoAlpha: 1,
             duration: 1,
-            clipPath: 'circle(15% at 50% 45%)',
+            clipPath: 'circle(15% at 50% 50%)',
+            yPercent: 5,
 
             onStart: () => {
-                bigCircle.classList.remove('active')
-                smallCircle.classList.remove('active')
-            },
-            onEnterBack: () => {
-                bigCircle.classList.remove('active')
-                smallCircle.classList.remove('active')
-            },
-            onLeaveBack: () =>{
-                bigCircle.classList.remove('active')
-                smallCircle.classList.remove('active')
-            },
-    
-            onComplete: () => {
                 bigCircle.classList.add('active')
                 smallCircle.classList.add('active')
             },
+            onEnterBack: () => {
+                bigCircle.classList.add('active')
+                smallCircle.classList.add('active')
+            },
+            onLeaveBack: () =>{
+                bigCircle.classList.add('active')
+                smallCircle.classList.add('active')
+            },
+    
+            onComplete: () => {
+                bigCircle.classList.remove('active')
+                smallCircle.classList.remove('active')
+            },
 
         }, '<')
     
-        tl.to(CardsHider[i], {
-            scale: 0,
-            duration: 1
-        }, '<')
+        // tl.to(CardsHider[i], {
+        //     clipPath: 'circle(0% at 50% 50%)',
+        //     // duration: 1
+        // }, '<')
     
         tl.to(landBs_2[i], {
             opacity: 1,
@@ -160,7 +175,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }, '<')
         tl.to(CardsInfo[i], {
             opacity: 1,
-        },)
+            // duration: 3
+        },'<+=80%')
 
 
         if (i == (landmarksCards_2.length - 1)){
@@ -168,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 scale: 1,
             }, )
             tl.to(landmarksCards_2[i],{
-                y: 40,
+                // y: 40,
                 duration: 0,
             }, )
             tl.to(landmarksCards_2[i],{
@@ -180,14 +196,16 @@ document.addEventListener("DOMContentLoaded", function () {
             tl.to(landmarksCards_2[i], {
                 yPercent: -salamYcardPercent,
                 clipPath: 'circle(1% at 50% 50%)',
-            })
+            },)
             salamYcardPercent-=4;
-            tl.to('lands-card-hider',{
-                scale: 1,
-            }, '<')
+            // tl.to('lands-card-hider',{
+            //     scale: 1,
+            // }, '<')
             tl.to(CardsHider[i], {
-                scale: 1,
-                duration: 1
+                clipPath: 'circle(5% at 50% 50%)',
+                duration:2.5,
+                ease: "none"
+                // duration: 4
             }, '<')
         }
 
