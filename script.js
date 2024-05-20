@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
             trigger: '.main',
             start: 'top top',
-            end: 'bottom+=6500vh top',
+            end: 'bottom+=7000vh top',
             markers: true,
             pin: true,
             scrub: 2,
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         tl.to(fuckingLine, {
             yPercent: 100,
-            duration: 2.5
+            duration: 2.8
         }, '<')
 
 
