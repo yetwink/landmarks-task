@@ -13,11 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
           smallCircle = document.querySelector('.small-circle'),
           fuckingLine = document.querySelector('.line');
 
-
-    console.log(bigCircle, smallCircle);
     gsap.registerPlugin(ScrollTrigger);
-
-
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: '.main',
@@ -50,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     tl.to('.small-circle', {
         autoAlpha: 1,
-        // duration: 1
     },'<')
     
     
@@ -88,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     tl.to('.lands-card-info', {
         opacity: 0,
         duration: 0,
-        // y: -450,
         yPercent: -47
     }, '<')
     tl.to('.lands-card-hider', {
@@ -102,8 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     for(let i = 0; i < landmarksWrappers.length; i++){
-
-  
         tl.to(hiddenInfo[i], {
             xPercent: 100,
             duration: 0.5
@@ -113,8 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
             yPercent: 100,
             duration: 1
         }, '<')
-
-
 
         tl.to(landmarksWrappers[i],{
             y: 30,
@@ -126,22 +116,14 @@ document.addEventListener("DOMContentLoaded", function () {
             },
 
         }, '<')
-
-
-    
     
         tl.to(CardsImage[i],{
             scale: 0.6,
-            // y: -50,
         }, '<')
-
 
         tl.to(CardsHider[i], {
             clipPath: 'circle(0% at 50% 50%)',
-            // duration: 1
         }, '<')
-
-
     
         tl.to(landmarksCards_2[i], {
             autoAlpha: 1,
@@ -167,28 +149,21 @@ document.addEventListener("DOMContentLoaded", function () {
             },
 
         }, '<')
-    
-        // tl.to(CardsHider[i], {
-        //     clipPath: 'circle(0% at 50% 50%)',
-        //     // duration: 1
-        // }, '<')
-    
+
         tl.to(landBs_2[i], {
             opacity: 1,
             duration: 0.5
         }, '<')
+
         tl.to(CardsInfo[i], {
             opacity: 1,
-            // duration: 3
         },'<60%')
-
 
         if (i == (landmarksCards_2.length - 1)){
             tl.to(CardsImage[i],{
                 scale: 1,
             }, )
             tl.to(landmarksCards_2[i],{
-                // y: 40,
                 duration: 0,
             }, )
             tl.to(landmarksCards_2[i],{
@@ -202,25 +177,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 clipPath: 'circle(1% at 50% 50%)',
             },)
             salamYcardPercent-=4;
-            // tl.to('lands-card-hider',{
-            //     scale: 1,
-            // }, '<')
+
             tl.to(CardsHider[i], {
                 clipPath: 'circle(5% at 50% 50%)',
-                // duration:2.5,
                 ease: "none"
-                // duration: 4
             }, '<')
         }
 
-
-    
         tl.to(CardsInfo[i], {
             opacity: 0,
             duration: 0,
             y: -400,
         }, '<')
-
 
     }
   });
