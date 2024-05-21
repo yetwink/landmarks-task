@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
             trigger: '.main',
             start: 'top top',
-            end: 'bottom+=6500vh top',
+            end: 'bottom+=8500vh top',
             markers: true,
             pin: true,
             scrub: 2,
@@ -33,14 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
         autoAlpha: 1,
         duration: 1,
         clipPath: 'circle(15% at 50% 50%)',
-        // yPercent: -5,
-        
     })
 
     tl.to('.lands-card', {
         yPercent: -5,
-        // objectPosition: '50% 50%'
-    }, '<+=60%')
+    }, '<60%')
     
     tl.to('.landmarks__shadow',{
         autoAlpha: 1,
@@ -53,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     tl.to('.small-circle', {
         autoAlpha: 1,
-        duration: 1
+        // duration: 1
     },'<')
     
     
@@ -73,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     landmarksWrappers.forEach(el => {
         tl.to(el, {
             yPercent: -10,
+            duration: 0.1
         })
     }, '<')
 
@@ -113,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         tl.to(fuckingLine, {
             yPercent: 100,
-            duration: 2.5
+            duration: 1
         }, '<')
 
 
@@ -182,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tl.to(CardsInfo[i], {
             opacity: 1,
             // duration: 3
-        },'<+=80%')
+        },'<60%')
 
 
         if (i == (landmarksCards_2.length - 1)){
@@ -209,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // }, '<')
             tl.to(CardsHider[i], {
                 clipPath: 'circle(5% at 50% 50%)',
-                duration:2.5,
+                // duration:2.5,
                 ease: "none"
                 // duration: 4
             }, '<')
