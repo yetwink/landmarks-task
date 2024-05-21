@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
             bigCircle.classList.remove('active')
             smallCircle.classList.remove('active')
         },
-
     },)
 
     tl.to('.lands-card-info', {
@@ -109,12 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
         tl.to(landmarksWrappers[i],{
             y: 30,
             opacity: 1,
-
             onComplete: () => {
                 bigCircle.classList.remove('active')
                 smallCircle.classList.remove('active')
             },
-
         }, '<')
     
         tl.to(CardsImage[i],{
@@ -129,25 +126,14 @@ document.addEventListener("DOMContentLoaded", function () {
             autoAlpha: 1,
             clipPath: 'circle(15% at 50% 50%)',
             yPercent: 5,
-
             onStart: () => {
                 bigCircle.classList.add('active')
                 smallCircle.classList.add('active')
             },
-            onEnterBack: () => {
-                bigCircle.classList.add('active')
-                smallCircle.classList.add('active')
-            },
-            onLeaveBack: () =>{
-                bigCircle.classList.add('active')
-                smallCircle.classList.add('active')
-            },
-    
             onComplete: () => {
                 bigCircle.classList.remove('active')
                 smallCircle.classList.remove('active')
             },
-
         }, '<')
 
         tl.to(landBs_2[i], {
@@ -189,6 +175,5 @@ document.addEventListener("DOMContentLoaded", function () {
             duration: 0,
             y: -400,
         }, '<')
-
     }
   });
